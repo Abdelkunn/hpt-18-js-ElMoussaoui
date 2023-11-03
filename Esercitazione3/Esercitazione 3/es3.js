@@ -143,6 +143,21 @@ switch(true)
 
 
 
+//ESERCITAZIONE 5:
+
+
+function gioco(params) {
+    
+    
+}
+
+
+
+Math.floor((Math.random() * 6) + 1)
+
+
+
+
 
 
 
