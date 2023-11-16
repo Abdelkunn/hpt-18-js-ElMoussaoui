@@ -71,4 +71,3 @@ let chiedi;
 // }
 
 // console.log(sommaDispari);
-
