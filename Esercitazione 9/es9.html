@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Countdown Timer</title>
+  <link rel="stylesheet" href="es9.css">
+</head>
+<body>
+  <label for="secondsInput">Inserisci il numero di secondi:</label>
+  <input type="number" id="secondsInput" placeholder="Inserisci i secondi">
+
+  <div id="output"></div>
+
+  <button id="btn1" onclick="startCountdown()">Avvia Countdown</button>
+  <button id="btn2" onclick="pauseCountdown()">Pausa Countdown</button>
+  <button id="btn3" onclick="resetCountdown()">Reset Countdown</button>
+
+<style>
+  body {
+    font-family: Arial, sans-serif;
+  }
+
+  #contactsTable {
+    margin-top: 20px;
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  #contactsTable, #contactsTable th, #contactsTable td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+
+  #toggleButton {
+    margin-bottom: 10px;
+  }
+</style>
+<title>Rubrica Contatti</title>
+</head>
+<body>
+
+<button id="toggleButton" onclick="toggleContacts()">Mostra/Nascondi Rubrica</button>
+
+<table id="contactsTable">
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th>Cognome</th>
+      <th>Email</th>
+      <th>Azioni</th>
+    </tr>
+  </thead>
+  <tbody id="contactsBody"></tbody>
+</table>
+
+<form id="addContactForm">
+  <label for="firstName">Nome:</label>
+  <input type="text" id="firstName" required>
+  <label for="lastName">Cognome:</label>
+  <input type="text" id="lastName" required>
+  <label for="email">Email:</label>
+  <input type="email" id="email" required>
+  <button type="button" onclick="addContact()">Aggiungi Contatto</button>
+</form>
+
+<script>
+  // Array di contatti di partenza
+  let contacts = [
+    { firstName: 'Mario', lastName: 'Rossi', email: 'mario.rossi@example.com' },
+    { firstName: 'Laura', lastName: 'Bianchi', email: 'laura.bianchi@example.com' },
+    // Aggiungi altri contatti se necessario
+  ];
+
+  const contactsTable = document.getElementById('contactsTable');
+  const contactsBody = document.getElementById('contactsBody');
+  const addContactForm = document.getElementById('addContactForm');
+
+  // Inizializza la tabella con i contatti di partenza
+  populateTable();
+
+  function toggleContacts() {
+    contactsTable.style.display = (contactsTable.style.display === 'none' || contactsTable.style.display === '') ? 'table' : 'none';
+  }
+
+  function populateTable() {
+    contactsBody.innerHTML = ''; // Pulisce la tabella prima di popolarla nuovamente
+
+    for (const contact of contacts) {
+      const row = contactsBody.insertRow();
+      row.insertCell(0).textContent = contact.firstName;
+      row.insertCell(1).textContent = contact.lastName;
+      row.insertCell(2).textContent = contact.email;
+
+      const actionsCell = row.insertCell(3);
+      const deleteButton = document.createElement('button');
+      deleteButton.textContent = 'Elimina';
+      deleteButton.onclick = () => deleteContact(contact);
+      actionsCell.appendChild(deleteButton);
+
+      const editButton = document.createElement('button');
+      editButton.textContent = 'Modifica';
+      editButton.onclick = () => editContact(contact);
+      actionsCell.appendChild(editButton);
+    }
+  }
+
+  function addContact() {
+    const firstName = document.getElementById('firstName').value;
+    const lastName = document.getElementById('lastName').value;
+    const email = document.getElementById('email').value;
+
+    // Verifica che tutti i campi siano compilati
+    if (!firstName || !lastName || !email) {
+      alert('Compila tutti i campi per aggiungere un contatto.');
+      return;
+    }
+
+    // Aggiungi il nuovo contatto all'array
+    contacts.push({ firstName, lastName, email });
+
+    // Pulisce i campi del modulo
+    addContactForm.reset();
+
+    // Aggiorna la tabella
+    populateTable();
+  }
+
+  function deleteContact(contactToDelete) {
+    // Filtra l'array per rimuovere il contatto specificato
+    contacts = contacts.filter(contact => contact !== contactToDelete);
+
+    // Aggiorna la tabella
+    populateTable();
+  }
+
+  function editContact(contactToEdit) {
+    // Chiedi all'utente i nuovi dati per il contatto
+    const newFirstName = prompt('Nuovo Nome:', contactToEdit.firstName);
+    const newLastName = prompt('Nuovo Cognome:', contactToEdit.lastName);
+    const newEmail = prompt('Nuova Email:', contactToEdit.email);
+
+    // Verifica che l'utente non abbia cliccato su Annulla
+    if (newFirstName !== null && newLastName !== null && newEmail !== null) {
+      // Aggiorna i dati del contatto
+      contactToEdit.firstName = newFirstName;
+      contactToEdit.lastName = newLastName;
+      contactToEdit.email = newEmail;
+
+      // Aggiorna la tabella
+      populateTable();
+    }
+  }
+</script>
+
+  <script src="es9.js"></script>
+</body>
+</html>

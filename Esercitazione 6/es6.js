@@ -39,7 +39,7 @@ console.log("------MEDIA NUMERI DISPARI--------");
 console.log(somma)
 
 
-let chiedi;
+//let chiedi;
     do{
        chiedi =prompt("Scegliere Bevanda");
         if  (chiedi == "1"){
@@ -72,3 +72,27 @@ let chiedi;
 
 // console.log(sommaDispari);
 
+
+const numbers = [1,2,3,4,5];
+const sottoinsieme = numbers.slice(1,4)
+
+
+console.log(sottoinsieme);
+console.log(numbers);
+
+
+
+// Per ordinare un Array di numeri
+const caso = [1,-20,300,45,52];
+caso.sort(function ordine (a, b){
+    return a - b // (fare b-a per decrescente)
+})
+console.log(caso)
+
+
+
+function ordine(params){
+   const salam = [1,5,4,3,10]; 
+   return ordine
+   console.log(salam);   
+}

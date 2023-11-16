@@ -1,0 +1,16 @@
+#calculator{
+    width: 500px;
+    height: 300px;
+    background-color: bisque;
+    margin: 5px;
+}
+
+
+#result{
+    width: 200px;
+    height: 100px;
+    float:left;
+    line-height: 200%;
+
+
+}
