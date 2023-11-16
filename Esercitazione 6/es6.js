@@ -71,6 +71,7 @@ console.log(somma)
 // }
 
 // console.log(sommaDispari);
+<<<<<<< HEAD:Esercitazione 6/es6.js
 
 
 const numbers = [1,2,3,4,5];
@@ -96,3 +97,5 @@ function ordine(params){
    return ordine
    console.log(salam);   
 }
+=======
+>>>>>>> 1c822b0f69f60852b3c7fcca7de08ba67c568237:Esercitazione3/es6.js
